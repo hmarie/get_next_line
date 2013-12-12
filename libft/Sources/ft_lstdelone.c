@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/23 14:35:07 by hmarie            #+#    #+#             */
-/*   Updated: 2013/11/26 15:07:47 by hmarie           ###   ########.fr       */
+/*   Created: 2013/12/05 14:03:34 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/11 11:50:29 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	unsigned int		i;
-	char				*s2;
-
-	i = 0;
-	if (s && s2 && f)
-	{
-		if ((s2 = ft_strnew(ft_strlen(s))) == NULL)
-			return (NULL);
-		while (*(s + i))
-		{
-			*(s2 + i) = f(i, *(s + i));
-			i++;
-		}
-		*(s2 + i);
-	}
-	return (s2);
+	del((*alst)->content, (*alst)->content_size);
+	free(*alst);
+	*alst = NULL;
 }

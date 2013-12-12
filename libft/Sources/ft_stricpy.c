@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memlen.c                                        :+:      :+:    :+:   */
+/*   ft_stricpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/05 16:00:01 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/05 16:09:21 by hmarie           ###   ########.fr       */
+/*   Created: 2013/12/06 15:21:38 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/06 16:46:05 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memlen(const void *s, int c, size_t n)
+char	*ft_stricpy(char *s1, const char *s2, size_t i)
 {
-	return (ft_memchr(s, c, n) - s);
+	size_t	x;
+
+	x = 0;
+	while (*(s2 + i))
+	{
+		*(s1 + x) = *(s2 + i);
+		i++;
+		x++;
+	}
+	*(s1 + x) = *(s2 + i);
+	return (s1);
 }

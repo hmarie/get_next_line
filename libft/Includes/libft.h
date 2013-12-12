@@ -6,7 +6,7 @@
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 11:34:07 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/05 16:57:42 by hmarie           ###   ########.fr       */
+/*   Updated: 2013/12/12 12:07:47 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,27 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUF_SIZE 8000
-
 typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-	
+
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void * s1, const void * s2, size_t n);
-void	*ft_memccpy(void * s1, const void * s2, int c, size_t n);
+void	*ft_memcpy(void *s1, const void *s2, size_t n);
+void	*ft_memccpy(void *s1, const void *s2, int c, size_t n);
 void	*ft_memmove(void *s1, const void *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
-char	*ft_strcpy(char * s1, const char * s2);
-char	*ft_strncpy(char * s1, const char * s2, size_t n);
-char	*ft_strcat(char * s1, const char * s2);
-char	*ft_strncat(char * s1, const char * s2, size_t n);
-size_t	ft_strlcat(char * dst, const char * src, size_t size);
+char	*ft_strcpy(char *s1, const char *s2);
+char	*ft_strncpy(char *s1, const char *s2, size_t n);
+char	*ft_strcat(char *s1, const char *s2);
+char	*ft_strncat(char *s1, const char *s2, size_t n);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strstr(const char *s1, const char *s2);
@@ -74,6 +72,7 @@ char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
 char	*ft_itoa(int n);
 t_list	*ft_lstnew(void const *content, size_t content_size);
+t_list	*ft_lstnewend(void const *content, size_t content_size, t_list *lst);
 void	ft_putchar(char c);
 void	ft_putstr(char const *s);
 void	ft_putendl(char const *s);
@@ -83,7 +82,10 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+void	ft_lstdel(t_list **alst, void(*del)(void *, size_t));
 int		get_next_line(int const ft, char ** line);
-int		ft_memlen(const void *s, int c, size_t n);
+size_t	ft_memlen(const void *s, int c, size_t n);
+char	*ft_stricpy(char *s1, const char *s2, size_t i);
+int		ft_strichr(const char *s, int c);
 
 #endif

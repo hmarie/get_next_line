@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 18:11:47 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/03 12:03:13 by hmarie           ###   ########.fr       */
+/*   Created: 2013/12/05 16:00:01 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/06 16:46:18 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+size_t	ft_memlen(const void *s, int c, size_t n)
 {
-	size_t	i;
-	size_t  j;
-
-	i = 0;
-	j = ft_strlen(s1);
-	while (*(s2 + i))
-	{
-		*(s1 + i + j) = *(s2 + i);
-		i++;
-	}
-	*(s1 + i + j) = 0;
-	return (s1);
+	return (ft_memchr(s, c, n) - s);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strichr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 17:12:04 by hmarie            #+#    #+#             */
-/*   Updated: 2013/11/21 14:11:18 by hmarie           ###   ########.fr       */
+/*   Created: 2013/12/11 09:57:56 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/11 14:59:06 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char * s1, const char * s2)
+int	ft_strichr(const char *s, int c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (*(s2 + i))
+	while (i <= ft_strlen(s) + 1)
 	{
-		*(s1 + i) = *(s2 + i);
+		if (*(s + i) == (char)c)
+			return (i);
 		i++;
 	}
-	*(s1 + i) = *(s2 + i);
-	return (s1);
+	return (-1);
 }

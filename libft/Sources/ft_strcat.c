@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmdel.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/05 14:22:45 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/05 16:39:09 by hmarie           ###   ########.fr       */
+/*   Created: 2013/11/20 18:11:47 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/11 17:06:17 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstmdel(void *c, size_t n)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	free(c);
-	n = 0;
+	size_t	i;
+
+	i = ft_strlen(s1);
+	while (*s2)
+		*(s1 + i++) = *(s2++);
+	s1[i] = 0;
+	return (s1);
 }
