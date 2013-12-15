@@ -16,13 +16,14 @@
 static char	*ft_concat(t_list **lst, t_list **tmp)
 {
 	char	*s;
+
+	ft_putendl("BEGIN CONCAT");
 	s = ft_strnew(0);
-	ft_putendl("TEST 10");
 	ft_putendl((*lst)->content);
 	*lst = *tmp;
 	while (*lst)
 	{
-		ft_putendl("TEST 11");
+		ft_putendl("-");
 		ft_putstr("CONTENT AVANT: ");
 		ft_putendl((*lst)->content);
 		ft_putstr("CONTENU DE S AVANT: ");
@@ -39,36 +40,34 @@ static char	*ft_concat(t_list **lst, t_list **tmp)
 
 static void	ft_newlst(char **buf, t_list **lst, t_list **tmp)
 {
-	ft_putendl("TEST 7");
+	ft_putendl("BEGIN NEWLST");
 	if (*lst)
 	{
-		ft_putendl("TEST 9");
+		ft_putendl("LST FOUND");
 		*lst = ft_lstnewend(*buf, ft_strlen(*buf), *lst);
 		ft_putendl((*lst)->content);
-		ft_putendl("TEST 9-");
+		ft_putendl("LST FOUND END-");
 	}
 	else
 	{
-		ft_putendl("TEST 8");
+		ft_putendl("LST NOT FOUND");
 		*lst = ft_lstnew(*buf, ft_strlen(*buf));
 		*tmp = *lst;
 		ft_putendl((*lst)->content);
-		ft_putendl("TEST 8-");
+		ft_putendl("LST NOT FOUND END-");
 	}
 }
 
 static int	ft_check_buf(char **line, char **save, char *buf, t_list **lst, t_list **tmp)
 {
 	int	i;
-	ft_putendl("TEST 5");
+	ft_putendl("BEGIN CHECK BUF");
 
 	if ((i = ft_strichr(buf, '\n')) >= 0)
 	{
-		ft_putendl("TEST 6");
-		ft_putnbr(i);
+		ft_putendl("CHECK BUF - n FOUND");
 		ft_strncpy(*line, buf, i);
-		ft_putendl(*line);
-		**(line + i) = 0;
+		*(line + i) = 0;
 		ft_putendl(*line);
 		ft_newlst(line, lst, tmp);
 		*save = ft_strsub(buf, i + 1, (BUF_SIZE - i));
@@ -78,7 +77,7 @@ static int	ft_check_buf(char **line, char **save, char *buf, t_list **lst, t_lis
 	}
 	else
 	{
-		ft_putendl("TEST 6.5");
+		ft_putendl("CHECK BUF - n NOT FOUND");
 		ft_newlst(&buf, lst, tmp);
 		return (0);
 	}
@@ -88,27 +87,25 @@ static int	ft_check_save(char **line, char **save, t_list **lst, t_list **tmp)
 {
 	int	i;
 
+	ft_putendl("BEGIN CHECK SAVE");
+	ft_putendl(*save);
 	if ((i = ft_strichr(*save, '\n')) >= 0)
 	{
-		ft_putendl("TEST 12");
-		ft_strncpy(*line, *save, i);
-		*(line + i) = 0;
-		*save = ft_strsub(*save, i + 1, ft_strlen(*save));
-		return (1);
+	    ft_putendl("CHECK SAVE - n FOUND");
+	    ft_strncpy(*line, *save, i);
+	    *(line + i) = 0;
+	    *save = ft_strsub(*save, i + 1, ft_strlen(*save));
+	    return (1);
 	}
 	else
 	{
-	ft_putendl("TEST 13");
-		*lst = ft_lstnew(*save, ft_strlen(*save));
-	ft_putendl("TEST 14");
-		*tmp = *lst;
-		ft_putendl(*save);
-	ft_putendl("TEST 15");
-		free (*save);
-	ft_putendl("TEST 16");
-		*save = NULL;
-	ft_putendl("TEST 17");
-		return (0);
+	    ft_putendl("CHECK SAVE - n NOT FOUND");
+	    *lst = ft_lstnew(*save, ft_strlen(*save));
+	    *tmp = *lst;
+	    ft_putendl(*save);
+	    free (*save);
+	    *save = NULL;
+	    return (0);
 	}
 }
 
@@ -123,19 +120,19 @@ int			get_next_line(int const fd, char **line)
 	buf = ft_strnew(BUF_SIZE + 1);
 	lst = NULL;
 	tmp = NULL;
-	ft_putendl("TEST 1");
+	ft_putendl("START PROG");
 	if (save)
 	{
-		ft_putendl("TEST 2");
+		ft_putendl("SAVE FOUND");
 		if (ft_check_save(line, &save, &lst, &tmp) == 1)
 		{
 			return (1);
 		}
 	}
-	ft_putendl("TEST 2.5");
+	ft_putendl("PRE SAVE NOT FOUND");
 	while (read(fd, buf, BUF_SIZE) > 0)
 	{
-		ft_putendl("TEST 4");
+		ft_putendl("SAVE NOT FOUND");
 		if (ft_check_buf(line, &save, buf, &lst, &tmp) == 1)
 			return (1);
 	}
