@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 14:25:27 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/12 11:19:43 by hmarie           ###   ########.fr       */
+/*   Created: 2013/11/19 12:03:38 by hmarie            #+#    #+#             */
+/*   Updated: 2013/11/20 14:00:45 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __GET_NEXT_LINE_H__
-# define __GET_NEXT_LINE_H__
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+void	*ft_memset(void *b, int c, size_t len)
+{
+	size_t	i;
 
-# define BUF_SIZE 4
-
-int	get_next_line(int const ft, char ** line);
-
-#endif
+	i = 0;
+	while (i < len)
+	{
+		*((char *)b + i) = c;
+		i++;
+	}
+	return (b);
+}

@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 14:25:27 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/12 11:19:43 by hmarie           ###   ########.fr       */
+/*   Created: 2013/11/21 16:00:33 by hmarie            #+#    #+#             */
+/*   Updated: 2013/11/25 18:56:30 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __GET_NEXT_LINE_H__
-# define __GET_NEXT_LINE_H__
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+char	*ft_strstr(const char *s1, const char *s2)
+{
+	int	i;
+	int	j;
+	int	flag;
 
-# define BUF_SIZE 4
-
-int	get_next_line(int const ft, char ** line);
-
-#endif
+	i = 0;
+	j = 0;
+	flag = 0;
+	if (!*s2)
+		return ((char *)s1);
+	while (s1[j] && s2[i])
+	{
+		if (s1[j] == s2[i])
+		{
+			flag = j;
+			while (s1[j++] == s2[i++])
+			{
+				if (!s2[i])
+					return ((char *)s1 + flag);
+			}
+			j = flag;
+		}
+		j++;
+		i = 0;
+	}
+	return (NULL);
+}

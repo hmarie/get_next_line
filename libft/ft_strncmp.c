@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 14:25:27 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/12 11:19:43 by hmarie           ###   ########.fr       */
+/*   Created: 2013/11/21 17:47:31 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/05 14:13:49 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __GET_NEXT_LINE_H__
-# define __GET_NEXT_LINE_H__
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-# define BUF_SIZE 4
-
-int	get_next_line(int const ft, char ** line);
-
-#endif
+	if (n == (i = 0))
+		return (0);
+	while (*(s1 + i) == *(s2 + i) && *(s1 + i))
+		if (++i >= n)
+			return (0);
+	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+}

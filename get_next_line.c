@@ -58,7 +58,8 @@ static void	ft_newlst(char **buf, t_list **lst, t_list **tmp)
 	}
 }
 
-static int	ft_check_buf(char **line, char **save, char *buf, t_list **lst, t_list **tmp)
+static int	ft_check_buf(char **line, char **save, char *buf, t_list **lst,\
+						t_list **tmp)
 {
 	int	i;
 	ft_putendl("BEGIN CHECK BUF");

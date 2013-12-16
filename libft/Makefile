@@ -12,8 +12,7 @@
 
 NAME = libft.a
 PATH_SRC = ./Sources
-SRC = $(addprefix $(PATH_SRC)/, \
-	ft_memset.c \
+SRC = ft_memset.c \
 	ft_bzero.c \
 	ft_memcpy.c \
 	ft_memccpy.c \
@@ -70,7 +69,7 @@ SRC = $(addprefix $(PATH_SRC)/, \
 	ft_memlen.c \
 	ft_stricpy.c \
 	ft_lstnewend.c \
-	ft_strichr.c)
+	ft_strichr.c
 
 OBJ = ft_memset.o \
 	ft_bzero.o \

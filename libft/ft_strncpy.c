@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarie <hmarie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 14:25:27 by hmarie            #+#    #+#             */
-/*   Updated: 2013/12/12 11:19:43 by hmarie           ###   ########.fr       */
+/*   Created: 2013/11/20 17:33:20 by hmarie            #+#    #+#             */
+/*   Updated: 2013/12/03 12:03:25 by hmarie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __GET_NEXT_LINE_H__
-# define __GET_NEXT_LINE_H__
+#include "libft.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
+char	*ft_strncpy(char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
-# define BUF_SIZE 4
-
-int	get_next_line(int const ft, char ** line);
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		if (*(s2 + i) == 0)
+		{
+			while (*(s1 + i))
+			{
+				*(s1 + i) = 0;
+				i++;
+			}
+			return (s1);
+		}
+		*(s1 + i) = *(s2 + i);
+		i++;
+	}
+	return (s1);
+}
